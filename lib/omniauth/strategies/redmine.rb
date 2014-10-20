@@ -19,7 +19,7 @@ module OmniAuth
         {
           'nickname' => raw_info['user']['mail'],
           'email' => raw_info['user']['mail'],
-          'name' => username(raw_info)
+          'name' => username(raw_info, options.name_type)
         }
       end
 
@@ -33,8 +33,12 @@ module OmniAuth
         options.redmine_base_url
       end
 
-      def username(user_info)
-        return "#{raw_info['user']['lastname']} #{raw_info['user']['firstname']}"
+      def username(user_info, name_type)
+        if false
+          # stub
+        else
+          return "#{raw_info['user']['lastname']} #{raw_info['user']['firstname']}"
+        end
       end
     end
   end
