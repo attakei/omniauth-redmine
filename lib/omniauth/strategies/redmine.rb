@@ -17,7 +17,7 @@ module OmniAuth
 
       info do
         {
-          'nickname' => raw_info['user'][options.nickname_base],
+          'nickname' => raw_info['user'][(options.nickname_base || 'mail')],
           'email' => raw_info['user']['mail'],
           'name' => "#{raw_info['user']['lastname']} #{raw_info['user']['firstname']}"
         }
