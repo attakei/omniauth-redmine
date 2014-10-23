@@ -17,7 +17,7 @@ module OmniAuth
 
       info do
         {
-          'nickname' => raw_info['user']['mail'],
+          'nickname' => raw_info['user'][options.nickname_base],
           'email' => raw_info['user']['mail'],
           'name' => "#{raw_info['user']['lastname']} #{raw_info['user']['firstname']}"
         }
@@ -31,15 +31,6 @@ module OmniAuth
       def redmine_base_url
         options.redmine_base_url << '/' unless options.redmine_base_url.end_with?('/')
         options.redmine_base_url
-      end
-
-      def username
-        case options.name_type.to_sym
-        when :login then
-          return "#{raw_info['user']['login']}"
-        else
-          return "#{raw_info['user']['lastname']} #{raw_info['user']['firstname']}"
-        end
       end
     end
   end
